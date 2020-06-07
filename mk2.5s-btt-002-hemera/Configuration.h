@@ -71,7 +71,7 @@
 // @section info
 
 // Author info of this build printed to the host during boot and M115
-#define STRING_CONFIG_H_AUTHOR "(daveh: BTT002 MK2.5S/TMC2130)" // Who made the changes.
+#define STRING_CONFIG_H_AUTHOR "(daveh: BTT002 MK2.5S/TMC2209/Hemera)" // Who made the changes.
 //#define CUSTOM_VERSION_FILE Version.h // Path from the root directory (no quotes)
 
 /**
@@ -528,7 +528,7 @@
   //#define MIN_BED_POWER 0
   //#define PID_BED_DEBUG // Sends debug data to the serial port.
 
-  // BTT002 MK3S // revise
+  // BTT002 MK3S // need to revise
   #define  DEFAULT_bedKp 126.13
   #define  DEFAULT_bedKi 4.30
   #define  DEFAULT_bedKd 924.76
@@ -726,7 +726,7 @@
  * Override with M92
  *                                      X, Y, Z, E0 [, E1[, E2...]]
  */
-// E3D Hemera is 409 steps per unit on MK2.5S (was 133) -> 818 with increased stepping
+// E3D Hemera is 409 steps per unit on MK2.5S -> 818 with 32 microsteps on the exturder
 #define DEFAULT_AXIS_STEPS_PER_UNIT   { 100, 100, 400, 818 }
 
 /**

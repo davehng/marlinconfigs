@@ -8,7 +8,10 @@ I'm not using sensorless homing on the TMC2209s as the MK2.5S has min limit swit
 
 This configuration was based on the marlin config for MK3S/TMC2209 config by thisiskeithb & codiac2600.
 
-#Recommended PrusaSlicer Start G-Code
+The MK2.5S Hemera mount can be found [here](https://www.thingiverse.com/thing:4139915).
+I've changed the probing margins so bed leveling doesn't crash into the right and back margins due to the Hemera positioning.
+
+# Recommended PrusaSlicer Start G-Code
 ```gcode
 G90 ; use absolute coordinates
 M83 ; extruder relative mode
