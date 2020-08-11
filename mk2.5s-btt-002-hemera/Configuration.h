@@ -467,7 +467,7 @@
 #define HEATER_5_MAXTEMP 275
 #define HEATER_6_MAXTEMP 275
 #define HEATER_7_MAXTEMP 275
-#define BED_MAXTEMP      135
+#define BED_MAXTEMP      100
 
 //===========================================================================
 //============================= PID Settings ================================
@@ -488,12 +488,10 @@
 
   // If you are using a pre-configured hotend then you can use one of the value sets by uncommenting it
 
-  // 12V MK2.5S with BTT002
-  // Kp: 27.68 Ki: 1.79 Kd: 106.86
-  // M301 P27.68 I1.79 D106.86
-  #define DEFAULT_Kp 27.68
-  #define DEFAULT_Ki 1.79
-  #define DEFAULT_Kd 106.86  
+  // 12V MK2.5S with BTT002, Fysetc thermistor, anet 40mm fan
+  #define DEFAULT_Kp 14.50
+  #define DEFAULT_Ki 0.85
+  #define DEFAULT_Kd 63.00
 
 #endif // PIDTEMP
 
@@ -731,14 +729,15 @@
  *                                      X, Y, Z, E0 [, E1[, E2...]]
  */
 // E3D Hemera is 409 steps per unit on MK2.5S -> 818 with 32 microsteps on the exturder
-#define DEFAULT_AXIS_STEPS_PER_UNIT   { 100, 100, 400, 818 }
+// Dave's printer underextrudes, E steps calibration says to try 843.3
+#define DEFAULT_AXIS_STEPS_PER_UNIT   { 100, 100, 400, 843.3 }
 
 /**
  * Default Max Feed Rate (mm/s)
  * Override with M203
  *                                      X, Y, Z, E0 [, E1[, E2...]]
  */
-#define DEFAULT_MAX_FEEDRATE          { 200, 200, 30, 80 }
+#define DEFAULT_MAX_FEEDRATE          { 200, 200, 30, 40 }
 
 //#define LIMITED_MAX_FR_EDITING        // Limit edit via M203 or LCD to DEFAULT_MAX_FEEDRATE * 2
 #if ENABLED(LIMITED_MAX_FR_EDITING)
@@ -961,7 +960,7 @@
  * Specify a Probe position as { X, Y, Z }
  */
 // E3D Hemera
-#define NOZZLE_TO_PROBE_OFFSET { 26, -33.8, -0.95 }
+#define NOZZLE_TO_PROBE_OFFSET { 26, -33.8, -1.625 }
 
 // Most probes should stay away from the edges of the bed, but
 // with NOZZLE_AS_PROBE this can be negative for a wider probing area.
@@ -985,7 +984,7 @@
  * A total of 2 does fast/slow probes with a weighted average.
  * A total of 3 or more adds more slow probes, taking the average.
  */
-#define MULTIPLE_PROBING 2
+#define MULTIPLE_PROBING 3
 #define EXTRA_PROBING    1
 
 /**
@@ -1062,7 +1061,7 @@
 
 // Invert the stepper direction. Change (or reverse the motor connector) if an axis goes the wrong way.
 #define INVERT_X_DIR true
-#define INVERT_Y_DIR true
+#define INVERT_Y_DIR false
 #define INVERT_Z_DIR true
 
 // @section extruder
@@ -1256,7 +1255,7 @@
 #if EITHER(AUTO_BED_LEVELING_LINEAR, AUTO_BED_LEVELING_BILINEAR)
 
   // Set the number of grid points per dimension.
-  #define GRID_MAX_POINTS_X 5
+  #define GRID_MAX_POINTS_X 4
   #define GRID_MAX_POINTS_Y GRID_MAX_POINTS_X
 
   // Probe along the Y axis, advancing X after each column
